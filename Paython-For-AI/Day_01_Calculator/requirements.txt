@@ -1,0 +1,1 @@
+A Python-based CLI application for Basic Math, EMI calculation, Bill Splitting, and Tax/GST calculation.
