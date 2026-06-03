@@ -1,10 +1,31 @@
 
-expenses = []
+import json
+FILE_NAME = "expenses.json"
+
+def load_expenses():
+    # 'try-except' use kar rahe hain taaki agar pehli baar mein file na mile toh error na aaye
+    try:
+        with open(FILE_NAME, "r") as file:
+            return json.load(file) # Purana data file se utha liya
+    except FileNotFoundError:
+        return [] # Agar file nahi mili, toh ek khali list ban jayegi
+
+# Program start hote hi purana data load ho jayega
+expenses = load_expenses()
+
+# 2. FUNCTIONS
+def save_expenses():
+    # Naya function: Jab bhi list update hogi, yeh usko file mein likh dega
+    with open(FILE_NAME, "w") as file:
+        json.dump(expenses, file)
+# 3. FUNCTIONS
 def add_expense():
     item = input("Expance details (e.g., Food, Rent): ")
     amount = float(input("How much spand : "))
     expenses.append({"item": item, "amount": amount})
+    save_expenses() 
     print(f"✅ {item} ka kharcha add ho gaya!\n")
+# 4. FUNCTIONS
 def view_expenses():
     print("\n--- 💸 total Expance---")
     total = 0
