@@ -30,16 +30,23 @@ class Library:
                 print(f"Success: '{title}' wapas library mein aa gayi hai.")
                 return
         print(f"Error: '{title}' naam ki book hamari library mein nahi hai.")
-            
+    def count_available(self):
+        count =0;
+        for totoalCount in self.books:
+            if totoalCount.is_available:
+                count += 1
+        return count            
 my_library = Library()
 b1 = Book("Atomic Habits", "James Clear")
 b2= Book("Deep Work Clear", "Sagar Agarwal")
 
 my_library.add_book(b1)
 my_library.add_book(b2)
-
+count = my_library.count_available()
 for book_obj in my_library.books:
     print(book_obj.title)
 
 my_library.borrow_book("Atomic Habits")
 my_library.return_book("Atomic Habits")
+
+print(f"Abhi library mein {count} books available hain.")
